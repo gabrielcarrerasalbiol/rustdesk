@@ -12,6 +12,18 @@ on:
       publish-update-metadata:
         type: boolean
         default: false
+  # Graphitek: allow running this build directly from the fork
+  workflow_dispatch:
+    inputs:
+      upload-artifact:
+        type: boolean
+        default: true
+      upload-tag:
+        type: string
+        default: "nightly"
+      publish-update-metadata:
+        type: boolean
+        default: false
 
 # NOTE: F-Droid builder script 'flutter/build_fdroid.sh' reads environment
 # variables from this workflow!
