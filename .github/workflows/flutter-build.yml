@@ -466,7 +466,8 @@ jobs:
         if: env.UPLOAD_ARTIFACT == 'true'
         run: |
           # Graphitek: the MSI names the product after the app exe found in the dist dir
-          mv "../../rustdesk/rustdesk.exe" "../../rustdesk/Graphitek Soporte.exe"
+          # (cwd is the repo root here; the pushd below is what makes -d paths relative)
+          mv "./rustdesk/rustdesk.exe" "./rustdesk/Graphitek Soporte.exe"
           pushd ./res/msi
           python preprocess.py --arp --app-name "Graphitek Soporte" -d ../../rustdesk
           nuget restore msi.sln
